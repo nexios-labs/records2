@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 from collections import OrderedDict
 
@@ -10,7 +9,7 @@ def _reduce_datetimes(row):
     return row
 
 
-class Record(object):
+class Record:
     """A row, from a query, from a database."""
 
     __slots__ = ("_keys", "_values")
@@ -38,9 +37,9 @@ class Record(object):
         if key in usekeys:
             i = usekeys.index(key)
             if usekeys.count(key) > 1:
-                raise KeyError("Record contains multiple '{}' fields.".format(key))
+                raise KeyError(f"Record contains multiple '{key}' fields.")
             return self.values()[i]
-        raise KeyError("Record contains no '{}' field.".format(key))
+        raise KeyError(f"Record contains no '{key}' field.")
 
     def __getattr__(self, key):
         try:
@@ -74,7 +73,7 @@ class Record(object):
         return self.dataset.export(format, **kwargs)
 
 
-class RecordCollection(object):
+class RecordCollection:
     """A set of excellent Records from a query."""
 
     def __init__(self, rows):
@@ -83,7 +82,7 @@ class RecordCollection(object):
         self.pending = True
 
     def __repr__(self):
-        return "<RecordCollection size={} pending={}>".format(len(self), self.pending)
+        return f"<RecordCollection size={len(self)} pending={self.pending}>"
 
     def __iter__(self):
         i = 0

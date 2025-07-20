@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
 
 import os
 from contextlib import contextmanager
 
-from sqlalchemy import create_engine, exc, inspect, text
+from sqlalchemy import create_engine, inspect, text
 
 from .record import Record, RecordCollection
 
 
-class Database(object):
+class Database:
     """Main interface for database operations."""
 
     def __init__(self, db_url=None, **kwargs):
@@ -62,12 +61,12 @@ class Database(object):
             return conn.bulk_query(query, *multiparams)
 
     def query_file(self, path, fetchall=False, **params):
-        with open(path, "r") as f:
+        with open(path) as f:
             query = f.read()
         return self.query(query, fetchall=fetchall, **params)
 
     def bulk_query_file(self, path, *multiparams):
-        with open(path, "r") as f:
+        with open(path) as f:
             query = f.read()
         return self.bulk_query(query, *multiparams)
 
@@ -85,7 +84,7 @@ class Database(object):
             conn.close()
 
 
-class Connection(object):
+class Connection:
     def __init__(self, connection, close_with_result=False):
         self._connection = connection
         self._close_with_result = close_with_result
@@ -124,12 +123,12 @@ class Connection(object):
         return result
 
     def query_file(self, path, fetchall=False, **params):
-        with open(path, "r") as f:
+        with open(path) as f:
             query = f.read()
         return self.query(query, fetchall=fetchall, **params)
 
     def bulk_query_file(self, path, *multiparams):
-        with open(path, "r") as f:
+        with open(path) as f:
             query = f.read()
         return self.bulk_query(query, *multiparams)
 

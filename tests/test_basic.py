@@ -1,4 +1,3 @@
-import pytest
 
 from records2 import record
 

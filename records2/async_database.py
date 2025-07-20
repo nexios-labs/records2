@@ -1,6 +1,6 @@
-import os
+from collections.abc import AsyncGenerator, Sequence
 from contextlib import asynccontextmanager
-from typing import Any, AsyncGenerator, List, Optional, Sequence, Type, TypeVar
+from typing import Any, List, Optional, Type, TypeVar
 
 from pydantic import BaseModel
 from sqlalchemy import inspect, text
@@ -45,13 +45,13 @@ class Connection:
 
     async def query_file(self, path: str, **params) -> Any:
         async with await self._conn._handle.dbapi_connection.cursor() as cursor:
-            with open(path, "r") as f:
+            with open(path) as f:
                 sql = f.read()
             result = await self._conn.execute(text(sql), params)
             return result
 
     async def bulk_query_file(self, path: str, values: Sequence[dict]) -> Any:
-        with open(path, "r") as f:
+        with open(path) as f:
             sql = f.read()
         result = await self._conn.execute(text(sql), values)
         return result

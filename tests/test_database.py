@@ -1,7 +1,5 @@
 import os
 
-import pytest
-
 from records2 import database
 
 TEST_DB_URL = os.environ.get("TEST_DB_URL", "sqlite:///:memory:")

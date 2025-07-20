@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "records2"
-version = "1.0.0"
+version = "0.1.0"
 description = "A comprehensive, type-safe database solution for Python"
 authors = [
     {name = "Chidebele Dunamis", email = "techwithdunamix@gmail.com"}

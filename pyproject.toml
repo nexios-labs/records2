@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "records2"
-version = "0.1.1"
+version = "0.1.0"
 description = "A comprehensive, type-safe database solution for Python"
 authors = [
     {name = "Chidebele Dunamis", email = "techwithdunamix@gmail.com"}
@@ -86,7 +86,7 @@ python_functions = ["test_*"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.1.1"
+version = "0.1.0"
 version_files = [
     "pyproject.toml:version",
     "nexios/__main__.py:__version__"

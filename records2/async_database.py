@@ -13,7 +13,7 @@ from sqlalchemy.ext.asyncio import (
 T = TypeVar("T", bound=BaseModel)
 
 
-class Record(BaseModel):
+class BaseRecord(BaseModel):
     """Base class for all records, inherits from Pydantic v2 BaseModel."""
 
     pass
